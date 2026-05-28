@@ -65,9 +65,9 @@ export function ColorIconCatalog({ catalog }: Props) {
                     <img
                       src={`/icons/logos/${group}/${icon.file}`}
                       alt=""
-                      height={48}
                       loading="lazy"
                       className={styles.icon}
+                      style={{ maxHeight: 48, width: "auto" }}
                     />
                   </span>
                   <span className={styles.name}>{icon.name}</span>
