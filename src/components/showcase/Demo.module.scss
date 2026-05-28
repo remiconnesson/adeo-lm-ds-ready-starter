@@ -1,0 +1,85 @@
+.demo {
+  border: 1px solid var(--mz-border);
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  margin: 24px 0;
+}
+
+.header {
+  padding: 16px 20px 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.description {
+  margin: 4px 0 0;
+  color: var(--mz-fg-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.preview {
+  padding: 32px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  background:
+    linear-gradient(45deg, rgba(0, 0, 0, 0.025) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(0, 0, 0, 0.025) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.025) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.025) 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  border-top: 1px solid var(--mz-border);
+  border-bottom: 1px solid var(--mz-border);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--mz-surface);
+}
+
+.toggle,
+.copy {
+  font: inherit;
+  font-size: 12px;
+  padding: 4px 10px;
+  border: 1px solid var(--mz-border);
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--mz-fg);
+
+  &:hover {
+    background: #fafafa;
+  }
+}
+
+.lang {
+  margin-left: auto;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--mz-fg-muted);
+}
+
+.code {
+  margin: 0;
+  padding: 16px 20px;
+  background: var(--mz-code-bg);
+  color: var(--mz-code-fg);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1.6;
+  overflow-x: auto;
+  white-space: pre;
+}

@@ -1,66 +1,51 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import { CATEGORIES, COMPONENTS } from "@/lib/components-registry";
+import styles from "./page.module.scss";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div>
+      <header className={styles.hero}>
+        <span className={styles.eyebrow}>Adeo · Leroy Merlin</span>
+        <h1 className={styles.title}>Mozaic Showcase</h1>
+        <p className={styles.lede}>
+          A React playground for the Mozaic design system. Every component below
+          is rendered with the canonical SCSS classes shipped from
+          <code> @mozaic-ds/styles</code>. Open one to see a live demo and the
+          markup behind it.
+        </p>
+        <div className={styles.stats}>
+          <div>
+            <span className={styles.statValue}>{COMPONENTS.length}</span>
+            <span className={styles.statLabel}>Components</span>
+          </div>
+          <div>
+            <span className={styles.statValue}>{CATEGORIES.length}</span>
+            <span className={styles.statLabel}>Categories</span>
+          </div>
+          <div>
+            <span className={styles.statValue}>SCSS</span>
+            <span className={styles.statLabel}>First-class</span>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </header>
+
+      {CATEGORIES.map((category) => {
+        const items = COMPONENTS.filter((c) => c.category === category);
+        return (
+          <section key={category} className={styles.category}>
+            <h2 className={styles.categoryTitle}>{category}</h2>
+            <div className={styles.grid}>
+              {items.map((c) => (
+                <Link key={c.slug} href={`/c/${c.slug}`} className={styles.card}>
+                  <span className={styles.cardName}>{c.name}</span>
+                  <span className={styles.cardDescription}>{c.description}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }

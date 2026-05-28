@@ -1,0 +1,49 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { CATEGORIES, COMPONENTS } from "@/lib/components-registry";
+import styles from "./Sidebar.module.scss";
+
+export function Sidebar() {
+  const pathname = usePathname();
+
+  return (
+    <aside className={styles.sidebar}>
+      <div className={styles.header}>
+        <Link href="/" className={styles.brand}>
+          <span className={styles.brandDot} aria-hidden />
+          <span className={styles.brandText}>Mozaic Showcase</span>
+        </Link>
+        <p className={styles.tagline}>React playground for the Adeo design system</p>
+      </div>
+
+      <nav className={styles.nav} aria-label="Components">
+        {CATEGORIES.map((category) => {
+          const items = COMPONENTS.filter((c) => c.category === category);
+          return (
+            <section key={category} className={styles.section}>
+              <h2 className={styles.sectionTitle}>{category}</h2>
+              <ul className={styles.list}>
+                {items.map((c) => {
+                  const href = `/c/${c.slug}`;
+                  const active = pathname === href;
+                  return (
+                    <li key={c.slug}>
+                      <Link
+                        href={href}
+                        className={`${styles.link} ${active ? styles.linkActive : ""}`}
+                      >
+                        {c.name}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          );
+        })}
+      </nav>
+    </aside>
+  );
+}

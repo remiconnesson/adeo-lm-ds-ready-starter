@@ -1,0 +1,27 @@
+.box {
+  padding: 40px 32px;
+  background: var(--mz-surface);
+  border: 1px dashed var(--mz-border);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.body {
+  margin: 8px 0 0;
+  font-size: 13.5px;
+  color: var(--mz-fg-muted);
+  line-height: 1.6;
+
+  code {
+    background: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--mz-border);
+  }
+}
