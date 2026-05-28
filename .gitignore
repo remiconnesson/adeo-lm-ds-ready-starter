@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated assets (built from node_modules by scripts/)
+/public/themes/*.css
+/public/icons

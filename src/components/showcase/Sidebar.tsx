@@ -22,6 +22,28 @@ export function Sidebar() {
       </div>
 
       <nav className={styles.nav} aria-label="Components">
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Foundations</h2>
+          <ul className={styles.list}>
+            <li>
+              <Link
+                href="/icons"
+                className={`${styles.link} ${pathname === "/icons" ? styles.linkActive : ""}`}
+              >
+                Icons
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/icons-color"
+                className={`${styles.link} ${pathname === "/icons-color" ? styles.linkActive : ""}`}
+              >
+                Coloured icons
+              </Link>
+            </li>
+          </ul>
+        </section>
+
         {CATEGORIES.map((category) => {
           const items = COMPONENTS.filter((c) => c.category === category);
           return (
