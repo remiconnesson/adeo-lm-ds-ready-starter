@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CATEGORIES, COMPONENTS } from "@/lib/components-registry";
+import { EXAMPLES } from "@/lib/examples-registry";
 import { ThemePicker } from "./ThemePicker";
 import styles from "./Sidebar.module.scss";
 
@@ -22,6 +23,26 @@ export function Sidebar() {
       </div>
 
       <nav className={styles.nav} aria-label="Components">
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Examples</h2>
+          <ul className={styles.list}>
+            {EXAMPLES.map((ex) => {
+              const href = `/examples/${ex.slug}`;
+              const active = pathname === href;
+              return (
+                <li key={ex.slug}>
+                  <Link
+                    href={href}
+                    className={`${styles.link} ${active ? styles.linkActive : ""}`}
+                  >
+                    {ex.name}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Foundations</h2>
           <ul className={styles.list}>
