@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Roboto } from "next/font/google";
 import "./globals.scss";
 import { Sidebar } from "@/components/showcase/Sidebar";
+import { ThemeProvider } from "@/components/showcase/ThemeProvider";
 import styles from "./layout.module.scss";
 
 const lmSans = localFont({
@@ -17,6 +19,13 @@ const lmSans = localFont({
   display: "swap",
 });
 
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-roboto",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Mozaic Showcase",
   description: "React showcase of the Mozaic design system components",
@@ -24,12 +33,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={lmSans.variable}>
+    <html lang="en" className={`${lmSans.variable} ${roboto.variable}`}>
       <body>
-        <div className={styles.shell}>
-          <Sidebar />
-          <main className={styles.main}>{children}</main>
-        </div>
+        <ThemeProvider>
+          <div className={styles.shell}>
+            <Sidebar />
+            <main className={styles.main}>{children}</main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

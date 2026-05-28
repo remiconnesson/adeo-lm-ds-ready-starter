@@ -1,4 +1,5 @@
-@use "@mozaic-ds/styles";
+// Mozaic component styles are loaded as a precompiled bundle from /themes/{name}.css
+// so the theme can be switched at runtime. Showcase-only styles live below.
 
 :root {
   --mz-bg: #ffffff;
@@ -23,6 +24,10 @@ body {
   background: var(--mz-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html[data-theme="adeo"] body {
+  font-family: var(--font-roboto), -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 *,

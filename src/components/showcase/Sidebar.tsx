@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CATEGORIES, COMPONENTS } from "@/lib/components-registry";
+import { ThemePicker } from "./ThemePicker";
 import styles from "./Sidebar.module.scss";
 
 export function Sidebar() {
@@ -44,6 +45,8 @@ export function Sidebar() {
           );
         })}
       </nav>
+
+      <ThemePicker />
     </aside>
   );
 }
