@@ -43,6 +43,29 @@ The base unit is the **magic unit** = 16px in rem. In this starter (v2) use `get
 - **Web fonts**: Leroy Merlin Sans is loaded in `src/app/layout.tsx` via `next/font/local` from `node_modules/@mozaic-ds/web-fonts/*.woff2`. Don't load it any other way.
 - **UX copy** — follow the Five Principles (Clarity, Conciseness, Utility, Empathy, Human first). See [`agent_docs/08-content-design.md`](agent_docs/08-content-design.md).
 
+# Project skills
+
+This repo carries a `.agents/skills/` tree. **The agent harness does not auto-discover these** — they are listed below so you know they exist. When a user request matches a skill's trigger, **read the full `.agents/skills/<name>/SKILL.md`** (and any sibling files in that folder) before acting, then follow the procedure it defines. A skill's `SKILL.md` is the authoritative spec; the one-liners below are only routing hints.
+
+| Skill | Path | Trigger (load the SKILL.md when…) |
+| --- | --- | --- |
+| `caveman` | `.agents/skills/caveman/` | User says "caveman mode", "talk like caveman", "less tokens", "be brief", or invokes `/caveman`. Ultra-compressed output. |
+| `deploy-to-vercel` | `.agents/skills/deploy-to-vercel/` | User says "deploy my app", "deploy and give me the link", "push this live", or asks for a preview deployment. |
+| `diagnose` | `.agents/skills/diagnose/` | User says "diagnose this" / "debug this", reports a bug, or describes a performance regression. Reproduce → minimise → hypothesise → instrument → fix → regression-test loop. |
+| `grill-with-docs` | `.agents/skills/grill-with-docs/` | User wants to stress-test a plan against the project's domain language and ADRs. Updates `CONTEXT.md` / `docs/adr/` inline. |
+| `handoff` | `.agents/skills/handoff/` | User asks for a handoff / wants to switch sessions. Writes to OS temp dir (not the workspace). |
+| `improve-codebase-architecture` | `.agents/skills/improve-codebase-architecture/` | User asks to improve architecture, find refactoring opportunities, consolidate coupled modules, or make code more testable. Informed by `CONTEXT.md` and `docs/adr/`. |
+| `tdd` | `.agents/skills/tdd/` | User wants to build features or fix bugs using TDD, mentions "red-green-refactor", or asks for test-first development. |
+| `vercel-cli-with-tokens` | `.agents/skills/vercel-cli-with-tokens/` | Working with Vercel CLI via access tokens (non-interactive): "deploy to vercel", "set up vercel", "add environment variables to vercel". |
+| `vercel-composition-patterns` | `.agents/skills/vercel-composition-patterns/` | Refactoring components with boolean-prop proliferation, designing compound components / render props / context providers. Includes React 19 API changes. |
+| `vercel-optimize` | `.agents/skills/vercel-optimize/` | Vercel cost / performance optimization on deployed projects. Triggers on bill reduction, slow routes, Function Invocations, Fast Data Transfer, Core Web Vitals, Fluid compute, Build Minutes. |
+| `vercel-react-best-practices` | `.agents/skills/vercel-react-best-practices/` | Writing / reviewing / refactoring React + Next.js code for performance (components, data fetching, bundle, runtime). |
+| `vercel-react-view-transitions` | `.agents/skills/vercel-react-view-transitions/` | Adding page transitions, animating route changes, shared-element / enter-exit / list-reorder animations via React's `<ViewTransition>`. |
+| `web-design-guidelines` | `.agents/skills/web-design-guidelines/` | "Review my UI", "check accessibility", "audit design", "review UX", or "check my site against best practices". |
+| `zoom-out` | `.agents/skills/zoom-out/` | Agent (you) is unfamiliar with a section of code and needs a higher-level map of modules and callers. Disabled for model auto-invocation; trigger manually. |
+
+If a SKILL.md references sibling files (`ADR-FORMAT.md`, `metadata.json`, `references/`, `rules/`, `scripts/`, …), load them when the SKILL.md tells you to — not eagerly.
+
 # Project gotchas
 
 ## 1. `.mc-*` class discoverability is zero from this repo
