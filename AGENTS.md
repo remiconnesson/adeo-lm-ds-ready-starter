@@ -42,6 +42,7 @@ The base unit is the **magic unit** = 16px in rem. In this starter (v2) use `get
 - **Prefer the framework bindings** (`@mozaic-ds/react`) over hand-rolling `mc-*` markup when the binding exists, unless you're explicitly showcasing SCSS primitives.
 - **Web fonts**: Leroy Merlin Sans is loaded in `src/app/layout.tsx` via `next/font/local` from `node_modules/@mozaic-ds/web-fonts/*.woff2`. Don't load it any other way.
 - **UX copy** — follow the Five Principles (Clarity, Conciseness, Utility, Empathy, Human first). See [`agent_docs/08-content-design.md`](agent_docs/08-content-design.md).
+- **Mirror the user's language.** Always reply in the language the user wrote to you in. If they write in French, answer in French. If they write in Spanish, answer in Spanish. Switch immediately when they switch. UI strings you generate should be in that same language unless the user explicitly asks for another (or for a multi-language build).
 
 # Project skills
 
