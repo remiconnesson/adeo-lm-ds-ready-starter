@@ -1,5 +1,6 @@
 // Mozaic component styles are loaded as a precompiled bundle from /themes/{name}.css
-// so the theme can be switched at runtime. Showcase-only styles live below.
+// so the theme can be switched at runtime. The :root vars below are showcase fallbacks
+// used until the theme stylesheet has loaded; once it does, var(--color-…) overrides them.
 
 :root {
   --mz-bg: #ffffff;
@@ -7,7 +8,7 @@
   --mz-fg-muted: #6e6e6e;
   --mz-border: #e4e4e4;
   --mz-surface: #f6f6f6;
-  --mz-accent: #46a610;
+  --mz-accent: #78be20;
   --mz-code-bg: #1c1c1c;
   --mz-code-fg: #f6f6f6;
 }
@@ -20,8 +21,8 @@ body {
 body {
   margin: 0;
   font-family: var(--font-lm-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  color: var(--mz-fg);
-  background: var(--mz-bg);
+  color: var(--color-text-primary, var(--mz-fg));
+  background: var(--color-background-primary, var(--mz-bg));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

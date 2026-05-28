@@ -11,6 +11,8 @@ export function Sidebar() {
 
   return (
     <aside className={styles.sidebar}>
+      <ThemePicker />
+
       <div className={styles.header}>
         <Link href="/" className={styles.brand}>
           <span className={styles.brandDot} aria-hidden />
@@ -45,8 +47,6 @@ export function Sidebar() {
           );
         })}
       </nav>
-
-      <ThemePicker />
     </aside>
   );
 }
