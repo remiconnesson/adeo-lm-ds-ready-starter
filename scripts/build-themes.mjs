@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import * as sass from "sass";
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -17,7 +17,12 @@ for (const theme of themes) {
     loadPaths: [join(root, "node_modules")],
     style: "compressed",
   });
+  const rootVars = readFileSync(
+    join(root, "node_modules", "@mozaic-ds", "tokens", "build", theme, "css", "root.css"),
+    "utf8"
+  );
+  const css = rootVars + "\n" + result.css;
   const outPath = join(outDir, `${theme}.css`);
-  writeFileSync(outPath, result.css);
-  console.log(`built ${outPath} (${(result.css.length / 1024).toFixed(1)} KB)`);
+  writeFileSync(outPath, css);
+  console.log(`built ${outPath} (${(css.length / 1024).toFixed(1)} KB)`);
 }
