@@ -33,7 +33,7 @@ export default function HomePage() {
           <Link href="/c" className={`${styles.step} ${styles.stepLink}`}>
             <span className={styles.stepNumber}>2</span>
             <h3 className={styles.stepTitle}>
-              Explore the design system components
+              <span>Explore the design system components</span>
               <span aria-hidden className={styles.arrow}>→</span>
             </h3>
             <p className={styles.stepBody}>
@@ -45,7 +45,7 @@ export default function HomePage() {
           <Link href="/examples" className={`${styles.step} ${styles.stepLink}`}>
             <span className={styles.stepNumber}>3</span>
             <h3 className={styles.stepTitle}>
-              Explore the example pages
+              <span>Explore the example pages</span>
               <span aria-hidden className={styles.arrow}>→</span>
             </h3>
             <p className={styles.stepBody}>
